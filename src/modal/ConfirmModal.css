@@ -1,0 +1,36 @@
+.confirmModal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 30vh;
+    background: #282c34;
+    border-radius: 20px;
+    z-index: 1;
+    flex-direction: column;
+    border: 2px solid #0d6efd;
+}
+
+.confirmModalTitle {
+    font-size: 30px;
+    border-bottom: 2px solid #0d6efd;
+    width: 95%;
+    height: 40%;
+}
+
+.confirmModalMessage {
+    margin-top: 15px;
+    font-size: 15px;
+    width: 80%;
+    height: 40%;
+}
+
+.confirmModalButtons {
+    display: flex;
+    font-size: 15px;
+    justify-content: space-evenly;
+    width: 50%;
+    height: auto;
+    margin-bottom: 10px;
+}
