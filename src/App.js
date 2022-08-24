@@ -1,23 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useEffect, useState } from "react";
+import "./App.css";
+import DraftPositions from "./DraftPositions";
+import MainTitle from "./MainTitle";
+import ConfirmModal from "./modal/ConfirmModal";
+import Submission from "./Submission";
+
+export const UserSelectionContext = createContext("");
 
 function App() {
+  const [userSelection, setUserSelection] = useState(null);
+  const [showModal, setShowModal] = useState(null);
+  const blurElements = document.getElementById("blurElements");
+
+  useEffect(() => {
+    if (blurElements) {
+      if (showModal) {
+        blurElements.classList.add("contentBlur");
+      } else {
+        blurElements.classList.remove("contentBlur");
+      }
+    }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="App" className="App">
+      <UserSelectionContext.Provider
+        value={{ userSelection, setUserSelection, showModal, setShowModal }}
+      >
+        <div id="blurElements">
+          {" "}
+          <MainTitle id="mainTitle" />
+          <DraftPositions id="draftPositions" />
+          <Submission id="submission" />
+        </div>
+
+        {showModal && <ConfirmModal />}
+      </UserSelectionContext.Provider>
     </div>
   );
 }
